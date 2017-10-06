@@ -1,0 +1,24 @@
+{
+    "compilerOptions": {
+        "outDir": "./build/",
+        "alwaysStrict": true,
+        "sourceMap": true,
+        "noImplicitAny": true,
+        "noImplicitReturns": true,
+        "noUnusedLocals": true,
+        "suppressImplicitAnyIndexErrors": true,
+        "forceConsistentCasingInFileNames": true,
+        "target": "es2017",
+        "lib": [
+            "es2017"
+        ],
+        "jsx": "react",
+        "experimentalDecorators": true,
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "suppressExcessPropertyErrors": true
+    },
+    "exclude": [
+        "node_modules"
+    ]
+}
