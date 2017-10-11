@@ -1,24 +1,19 @@
 {
-    "compilerOptions": {
-        "outDir": "./build/",
-        "alwaysStrict": true,
-        "sourceMap": true,
-        "noImplicitAny": true,
-        "noImplicitReturns": true,
-        "noUnusedLocals": true,
-        "suppressImplicitAnyIndexErrors": true,
-        "forceConsistentCasingInFileNames": true,
-        "target": "es2017",
-        "lib": [
-            "es2017"
-        ],
-        "jsx": "react",
-        "experimentalDecorators": true,
-        "module": "commonjs",
-        "moduleResolution": "node",
-        "suppressExcessPropertyErrors": true
-    },
-    "exclude": [
-        "node_modules"
-    ]
+  "compilerOptions": {
+    "outDir": "./dist/",
+    "alwaysStrict": true,
+    "sourceMap": true,
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "noUnusedLocals": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "forceConsistentCasingInFileNames": true,
+    "target": "es5",
+    "experimentalDecorators": true,
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "suppressExcessPropertyErrors": true,
+    "declaration": true
+  },
+  "exclude": ["node_modules"]
 }

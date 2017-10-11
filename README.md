@@ -14,7 +14,7 @@ import {GiphyAPI} from 'restyped-giphy-api'
 const client = axios.create<GiphyAPI>({baseURL: 'http://api.giphy.com/v1'})
 
 // You'll get a compile error if you call an invalid route or use incorrect query params. Yay!
-client({
+client.request({
   url: '/gifs/trending',
   params: {
     api_key: 'Qr5fw...'
@@ -27,7 +27,7 @@ client({
 
 ### GET with query params (e.g. `/gifs/trending?api_key=...`)
 
-Use the `client({url: ..., params: ...})` syntax instead of `client.get` in order to have your params typechecked. See above.
+Use the `client.request({url: ..., params: ...})` syntax instead of `client.get` in order to have your params typechecked. See above.
 
 ### Routes with params in their paths (e.g. `/posts/:id/like`)
 
