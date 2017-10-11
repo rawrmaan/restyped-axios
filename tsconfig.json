@@ -15,5 +15,6 @@
     "suppressExcessPropertyErrors": true,
     "declaration": true
   },
+  "include": ["index.ts"],
   "exclude": ["node_modules"]
 }
