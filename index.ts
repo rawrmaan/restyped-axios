@@ -6,22 +6,13 @@ import axios, {
   CancelTokenStatic
 } from 'axios'
 
-interface RouteInterface {
-  params: any
-  query: any
-  body: any
-  response: any
-}
-
-interface BaseAPIDef {
-  [route: string]: any
-}
+import {RestypeBase, RestypeRoute} from 'restyped'
 
 export interface TypedAxiosRequestConfig<
-  APIDef extends BaseAPIDef,
-  Path extends keyof APIDef,
-  Method extends keyof APIDef[Path],
-  RouteDef extends RouteInterface = APIDef[Path][Method]
+  API extends RestypeBase,
+  Path extends keyof API,
+  Method extends keyof API[Path],
+  RouteDef extends RestypeRoute = API[Path][Method]
 > extends AxiosRequestConfig {
   url?: Path
   method?: Method
@@ -30,70 +21,67 @@ export interface TypedAxiosRequestConfig<
 }
 
 export interface TypedAxiosResponse<
-  APIDef extends BaseAPIDef,
-  Path extends keyof APIDef,
-  Method extends keyof APIDef[Path],
-  RouteDef extends RouteInterface = APIDef[Path][Method]
+  API extends RestypeBase,
+  Path extends keyof API,
+  Method extends keyof API[Path],
+  RouteDef extends RestypeRoute = API[Path][Method]
 > extends AxiosResponse {
   data: RouteDef['response']
-  config: TypedAxiosRequestConfig<APIDef, Path, Method>
+  config: TypedAxiosRequestConfig<API, Path, Method>
 }
 
-export interface TypedAxiosInstance<APIDef extends BaseAPIDef = any>
+export interface TypedAxiosInstance<API extends RestypeBase = any>
   extends AxiosInstance {
-  request<
-    Path extends keyof APIDef,
-    Method extends keyof APIDef['Path'] = 'GET'
-  >(
-    config: TypedAxiosRequestConfig<APIDef, Path, Method>
-  ): Promise<TypedAxiosResponse<APIDef, Path, Method>>
+  request<Path extends keyof API, Method extends keyof API['Path'] = 'GET'>(
+    config: TypedAxiosRequestConfig<API, Path, Method>
+  ): Promise<TypedAxiosResponse<API, Path, Method>>
 
-  get<Path extends keyof APIDef>(
+  get<Path extends keyof API>(
     url: Path | string,
-    config?: TypedAxiosRequestConfig<APIDef, Path, 'GET'>
-  ): Promise<TypedAxiosResponse<APIDef, Path, 'GET'>>
+    config?: TypedAxiosRequestConfig<API, Path, 'GET'>
+  ): Promise<TypedAxiosResponse<API, Path, 'GET'>>
 
-  delete<Path extends keyof APIDef>(
+  delete<Path extends keyof API>(
     url: Path | string,
-    config?: TypedAxiosRequestConfig<APIDef, Path, 'DELETE'>
-  ): Promise<TypedAxiosResponse<APIDef, Path, 'DELETE'>>
+    config?: TypedAxiosRequestConfig<API, Path, 'DELETE'>
+  ): Promise<TypedAxiosResponse<API, Path, 'DELETE'>>
 
-  head<Path extends keyof APIDef>(
+  head<Path extends keyof API>(
     url: Path | string,
-    config?: TypedAxiosRequestConfig<APIDef, Path, 'HEAD'>
-  ): Promise<TypedAxiosResponse<APIDef, Path, 'HEAD'>>
+    config?: TypedAxiosRequestConfig<API, Path, 'HEAD'>
+  ): Promise<TypedAxiosResponse<API, Path, 'HEAD'>>
 
-  post<Path extends keyof APIDef>(
+  post<Path extends keyof API>(
     url: Path | string,
-    data?: APIDef[Path]['POST']['Request'],
-    config?: TypedAxiosRequestConfig<APIDef, Path, 'POST'>
-  ): Promise<TypedAxiosResponse<APIDef, Path, 'POST'>>
+    data?: API[Path]['POST']['Request'],
+    config?: TypedAxiosRequestConfig<API, Path, 'POST'>
+  ): Promise<TypedAxiosResponse<API, Path, 'POST'>>
 
-  put<Path extends keyof APIDef>(
+  put<Path extends keyof API>(
     url: Path | string,
-    data?: APIDef[Path]['PUT']['Request'],
-    config?: TypedAxiosRequestConfig<APIDef, Path, 'PUT'>
-  ): Promise<TypedAxiosResponse<APIDef, Path, 'PUT'>>
+    data?: API[Path]['PUT']['Request'],
+    config?: TypedAxiosRequestConfig<API, Path, 'PUT'>
+  ): Promise<TypedAxiosResponse<API, Path, 'PUT'>>
 
-  patch<Path extends keyof APIDef>(
+  patch<Path extends keyof API>(
     url: Path | string,
-    data?: APIDef[Path]['PATCH']['Request'],
-    config?: TypedAxiosRequestConfig<APIDef, Path, 'PATCH'>
-  ): Promise<TypedAxiosResponse<APIDef, Path, 'PATCH'>>
+    data?: API[Path]['PATCH']['Request'],
+    config?: TypedAxiosRequestConfig<API, Path, 'PATCH'>
+  ): Promise<TypedAxiosResponse<API, Path, 'PATCH'>>
 }
 
-export interface TypedAxiosStatic<APIDef extends BaseAPIDef = any>
-  extends TypedAxiosInstance<APIDef> {
-  <Path extends keyof APIDef, Method extends keyof APIDef['Path'] = 'GET'>(
-    config: TypedAxiosRequestConfig<APIDef, Path, Method>
-  ): Promise<TypedAxiosResponse<APIDef, Path, Method>>
+export interface TypedAxiosStatic<API extends RestypeBase = any>
+  extends TypedAxiosInstance<API> {
+  <Path extends keyof API, Method extends keyof API['Path'] = 'GET'>(
+    config: TypedAxiosRequestConfig<API, Path, Method>
+  ): Promise<TypedAxiosResponse<API, Path, Method>>
 
-  <Path extends keyof APIDef, Method extends keyof APIDef['Path']>(
+  <Path extends keyof API, Method extends keyof API['Path']>(
     url: Path | string,
-    config?: TypedAxiosRequestConfig<APIDef, Path, Method>
-  ): Promise<TypedAxiosResponse<APIDef, Path, Method>>
+    config?: TypedAxiosRequestConfig<API, Path, Method>
+  ): Promise<TypedAxiosResponse<API, Path, Method>>
 
-  create<T extends APIDef>(config?: AxiosRequestConfig): TypedAxiosInstance<T>
+  create<T extends API>(config?: AxiosRequestConfig): TypedAxiosInstance<T>
 
   Cancel: CancelStatic
   CancelToken: CancelTokenStatic

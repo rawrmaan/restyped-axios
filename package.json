@@ -1,15 +1,24 @@
 {
   "name": "restyped-axios",
   "version": "1.0.0",
-  "description": "",
+  "description": "Axios typings for consuming RESTyped APIs",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rawrmaan/restyped-axios.git"
+  },
+  "author": "Arman Dezfuli-Arjomandi",
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rawrmaan/restyped-axios/issues"
+  },
+  "homepage": "https://github.com/rawrmaan/restyped-axios#readme",
   "dependencies": {
-    "axios": "0.16.2",
-    "typescript": "2.5.3"
+    "axios": "^0.16.2",
+    "restyped": "^1.0.5",
+    "typescript": "^2.4.0"
   }
 }
