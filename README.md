@@ -35,5 +35,5 @@ Use the `client({url: ..., params: ...})` syntax instead of `client.get` in orde
 Explicitly declare the canonical route in angle brackets to avoid an invalid route error.
 
 ```typescript
-client.post<'/posts/:id.like'>('/posts/3/like`)
+client.post<'/posts/:id.like'>('/posts/3/like')
 ```
