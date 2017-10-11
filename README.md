@@ -1,6 +1,5 @@
 # RESTyped Axios
-Axios typings for consuming [RESTyped](/rawrmaan/restyped) APIs
-
+Axios typings for consuming [RESTyped](https://github.com/rawrmaan/restyped) APIs
 
 ## Usage
 
