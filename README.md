@@ -36,3 +36,7 @@ Explicitly declare the canonical route in angle brackets to avoid an invalid rou
 ```typescript
 client.post<'/posts/:id/like'>('/posts/3/like')
 ```
+
+## Popular APIs to try out
+
+- Giphy API: [`restyped-giphy-api`](https://github.com/rawrmaan/restyped-giphy-api)
