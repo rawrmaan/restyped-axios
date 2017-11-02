@@ -6,13 +6,13 @@ import axios, {
   CancelTokenStatic
 } from 'axios'
 
-import {RestypeBase, RestypeRoute} from 'restyped'
+import {RestypedBase, RestypedRoute} from 'restyped'
 
 export interface TypedAxiosRequestConfig<
-  API extends RestypeBase,
+  API extends RestypedBase,
   Path extends keyof API,
   Method extends keyof API[Path],
-  RouteDef extends RestypeRoute = API[Path][Method]
+  RouteDef extends RestypedRoute = API[Path][Method]
 > extends AxiosRequestConfig {
   url?: Path
   method?: Method
@@ -21,16 +21,16 @@ export interface TypedAxiosRequestConfig<
 }
 
 export interface TypedAxiosResponse<
-  API extends RestypeBase,
+  API extends RestypedBase,
   Path extends keyof API,
   Method extends keyof API[Path],
-  RouteDef extends RestypeRoute = API[Path][Method]
+  RouteDef extends RestypedRoute = API[Path][Method]
 > extends AxiosResponse {
   data: RouteDef['response']
   config: TypedAxiosRequestConfig<API, Path, Method>
 }
 
-export interface TypedAxiosInstance<API extends RestypeBase = any>
+export interface TypedAxiosInstance<API extends RestypedBase = any>
   extends AxiosInstance {
   request<Path extends keyof API, Method extends keyof API['Path'] = 'GET'>(
     config: TypedAxiosRequestConfig<API, Path, Method>
@@ -70,7 +70,7 @@ export interface TypedAxiosInstance<API extends RestypeBase = any>
   ): Promise<TypedAxiosResponse<API, Path, 'PATCH'>>
 }
 
-export interface TypedAxiosStatic<API extends RestypeBase = any>
+export interface TypedAxiosStatic<API extends RestypedBase = any>
   extends TypedAxiosInstance<API> {
   <Path extends keyof API, Method extends keyof API['Path'] = 'GET'>(
     config: TypedAxiosRequestConfig<API, Path, Method>
