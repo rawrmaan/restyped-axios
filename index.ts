@@ -53,19 +53,19 @@ export interface TypedAxiosInstance<API extends RestypedBase = any>
 
   post<Path extends keyof API>(
     url: Path | string,
-    data?: API[Path]['POST']['Request'],
+    data?: API[Path]['POST']['body'],
     config?: TypedAxiosRequestConfig<API, Path, 'POST'>
   ): Promise<TypedAxiosResponse<API, Path, 'POST'>>
 
   put<Path extends keyof API>(
     url: Path | string,
-    data?: API[Path]['PUT']['Request'],
+    data?: API[Path]['PUT']['body'],
     config?: TypedAxiosRequestConfig<API, Path, 'PUT'>
   ): Promise<TypedAxiosResponse<API, Path, 'PUT'>>
 
   patch<Path extends keyof API>(
     url: Path | string,
-    data?: API[Path]['PATCH']['Request'],
+    data?: API[Path]['PATCH']['body'],
     config?: TypedAxiosRequestConfig<API, Path, 'PATCH'>
   ): Promise<TypedAxiosResponse<API, Path, 'PATCH'>>
 }
