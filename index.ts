@@ -32,7 +32,7 @@ export interface TypedAxiosResponse<
 
 export interface TypedAxiosInstance<API extends RestypedBase = any>
   extends AxiosInstance {
-  request<Path extends keyof API, Method extends keyof API['Path'] = 'GET'>(
+  request<Path extends keyof API, Method extends keyof API[Path] = 'GET'>(
     config: TypedAxiosRequestConfig<API, Path, Method>
   ): Promise<TypedAxiosResponse<API, Path, Method>>
 
@@ -72,11 +72,11 @@ export interface TypedAxiosInstance<API extends RestypedBase = any>
 
 export interface TypedAxiosStatic<API extends RestypedBase = any>
   extends TypedAxiosInstance<API> {
-  <Path extends keyof API, Method extends keyof API['Path'] = 'GET'>(
+  <Path extends keyof API, Method extends keyof API[Path] = 'GET'>(
     config: TypedAxiosRequestConfig<API, Path, Method>
   ): Promise<TypedAxiosResponse<API, Path, Method>>
 
-  <Path extends keyof API, Method extends keyof API['Path']>(
+  <Path extends keyof API, Method extends keyof API[Path]>(
     url: Path | string,
     config?: TypedAxiosRequestConfig<API, Path, Method>
   ): Promise<TypedAxiosResponse<API, Path, Method>>
