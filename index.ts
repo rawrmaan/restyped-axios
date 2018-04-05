@@ -6,10 +6,10 @@ import axios, {
   CancelTokenStatic
 } from 'axios'
 
-import {RestypedBase, RestypedRoute} from 'restyped'
+import {RestypedBase, RestypedIndexedBase, RestypedRoute} from 'restyped'
 
 export interface TypedAxiosRequestConfig<
-  API extends RestypedBase,
+  API extends RestypedIndexedBase,
   Path extends keyof API,
   Method extends keyof API[Path],
   RouteDef extends RestypedRoute = API[Path][Method]
@@ -21,7 +21,7 @@ export interface TypedAxiosRequestConfig<
 }
 
 export interface TypedAxiosResponse<
-  API extends RestypedBase,
+  API extends RestypedIndexedBase,
   Path extends keyof API,
   Method extends keyof API[Path],
   RouteDef extends RestypedRoute = API[Path][Method]
