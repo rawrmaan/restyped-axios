@@ -1,9 +1,12 @@
 # RESTyped Axios
+
 Axios typings for consuming [RESTyped](https://github.com/rawrmaan/restyped) APIs
 
 ## Usage
 
 `npm install restyped-axios`
+
+_Note: >=2.0.0 supports TypeScript 2.8 and higher. Use a lower version if you need TypeScript 2.4-2.7 support._
 
 It's just like normal axios, except you'll need to provide a RESTyped API definition file for the API you want to use.
 
@@ -20,7 +23,6 @@ client.request({
     api_key: 'Qr5fw...'
   }
 }).then(...)
-
 ```
 
 ## Special cases
