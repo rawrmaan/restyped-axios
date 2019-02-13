@@ -14,7 +14,7 @@ export interface TypedAxiosRequestConfig<
   Method extends keyof API[Path],
   RouteDef extends RestypedRoute = API[Path][Method]
 > extends AxiosRequestConfig {
-  url?: Path
+  url?: Path | string
   method?: Extract<Method, string>
   params?: RouteDef['query']
   data?: RouteDef['body']
